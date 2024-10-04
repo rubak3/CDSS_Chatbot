@@ -1,0 +1,175 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+.scene {
+  display: none;
+  width: 100vw;  /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+}
+
+.active {
+  display: block;
+}
+
+.container {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 90vw; /* Width relative to viewport width */
+  height: 90vh; /* Height relative to viewport height */
+  max-width: 700px; /* Max width to prevent it from being too large on wide screens */
+  max-height: 600px; /* Max height to prevent it from being too tall on short screens */
+  overflow: auto; /* Allow scrolling if content overflows */
+  position: relative; /* Required for positioning the close button */
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin: 10px 0;
+  width: 85%; /* Width relative to container size */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 150px;  /* Fixed width */
+  height: 40px;  /* Fixed height */
+  padding: 0;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#chat-output {
+  height: 250px;
+  width: 90%; /* Ensure both elements have the same width */
+  margin: 10px auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  overflow-y: auto;
+  text-align: left;
+  background-color: #fafafa;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#chatInput {
+  width: 90%; /* Same width as #chat-output */
+  height: 75px; /* Adjust height as needed */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: Arial, sans-serif; /* Font type for consistency */
+  overflow-y: auto; /* Add vertical scrolling if text overflows */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.user-message {
+  text-align: right;
+  color: #007BFF;
+}
+
+.llm-message {
+  text-align: left;
+  color: #333;
+}
+
+#walletMessage {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#walletAddress {
+  margin-top: 10px;
+}
+
+#patientAddress {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#userMessage {
+  color: #333;
+  font-size: 14px;
+  margin-top: 9px; /* Ensure space for extra messages */
+  margin-bottom: 0;
+}
+
+#fetchingMessage {
+  color: #333;
+  font-size: 14px;
+  margin-top: 0; /* Ensure space for extra messages */
+}
+
+#addressSection {
+  margin-top: 40px; /* Adjust the value as needed for desired spacing */
+}
+
+#scene2name {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#connectWalletButton {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#closeButton {
+  position: absolute; /* Position it relative to the container */
+  top: 10px; /* Distance from the top of the container */
+  right: 10px; /* Distance from the right of the container */
+  width: 30px; /* Width of the button */
+  height: 30px; /* Height of the button */
+  background-color: #fff; /* Background color of the button */
+  border: 1px solid #ccc; /* Border style */
+  border-radius: 50%; /* Make the button round */
+  font-size: 18px; /* Font size for the 'X' */
+  color: #007BFF; /* Color of the 'X' */
+  text-align: center; /* Center the text inside */
+  line-height: 30px; /* Align 'X' vertically */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+#closeButton:hover {
+  background-color: #f0f0f0; /* Change background on hover */
+}
