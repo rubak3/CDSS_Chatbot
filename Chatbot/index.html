@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Decision Support System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.4.7/dist/ethers.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2/dist/FileSaver.min.js"></script>
+</head>
+<body>
+
+    <!-- First Scene (Authentication Scene) -->
+    <div id="scene1" class="scene active container">
+        <h2>Welcome to the Clinical Decision Support System</h2>
+        <p>Please press the button to connect your wallet:</p>
+        <button id="connectWalletButton">Connect Wallet</button>
+        <div id="walletMessage" class="wallet-info"></div>
+        <div id="walletAddress" class="wallet-info"></div>
+        <p id="extraMessage"></p>
+        <div id="addressSection" style="display: none;">
+          <h4>Enter patient address</h4>
+          <input type="text" id="patientAddress" placeholder="Enter patient address">
+          <p id="userMessage"></p>
+          <p id="fetchingMessage"></p>
+          <div class="button-container">
+              <button id="startChatButton" disabled>Start</button>
+          </div>
+        </div>
+      </div>      
+    </div>
+
+    <!-- Second Scene (Chat Scene) -->
+    <div id="scene2" class="scene container">
+      <button id="closeButton" class="close-button">&times;</button>
+      <h3 id="scene2name">Clinical Decision Support System Chatbot</h3>
+      <div id="chat-output"></div>
+      <textarea id="chatInput" placeholder="Ask the LLM something..."></textarea>
+      <button id="sendMessage">Send</button>
+    </div>
+
+
+    <script type="module" defer src="script.js"></script>
+</body>
+</html>
