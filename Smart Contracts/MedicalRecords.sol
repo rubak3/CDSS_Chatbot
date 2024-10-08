@@ -1,15 +1,15 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.18;
 
 import "./Registration.sol";
 
-contract MedicalRecords2 {
+contract MedicalRecords {
 
     address immutable owner;
     Registration immutable registrationSC;
     uint256 prescriptionId;
 
-    struct prescription {
+    struct Prescription {
         address clinician;
         string condition;
         string medication;
@@ -19,34 +19,34 @@ contract MedicalRecords2 {
         bool dispensed;
     }
 
-    struct surgery {
+    struct Surgery {
         address clinician;
         string procedureName;
         uint256 date;
     }
 
-    struct labResult {
+    struct LabResult {
         address clinician;
         string testName;
         string testResult;
         uint256 date;
     }
 
-    struct chronicDisease {
+    struct ChronicDisease {
         address clinician;
         string disease;
         string treatment;
         uint256 date;
     }
 
-    struct patientRecords {
-        prescription[] prescriptions;
-        surgery[] surgeries;
-        chronicDisease[] chronicDiseases;
-        labResult[] labResults;
+    struct PatientRecords {
+        Prescription[] prescriptions;
+        Surgery[] surgeries;
+        ChronicDisease[] chronicDiseases;
+        LabResult[] labResults;
     }
 
-    mapping (address=>patientRecords) patientsRecords;
+    mapping (address=>PatientRecords) patientsRecords;
 
     constructor (address regSCAddr) {
         owner = msg.sender;
@@ -78,7 +78,7 @@ contract MedicalRecords2 {
 
     function addPrescription(address patientAddress, string memory condition, string memory medication, string memory dosage) public onlyRegisteredClinicians{
         require(registrationSC.registeredPatients(patientAddress), "Patient is not registered");
-        patientsRecords[patientAddress].prescriptions.push(prescription({
+        patientsRecords[patientAddress].prescriptions.push(Prescription({
             clinician: msg.sender,
             condition: condition,
             medication: medication,
@@ -93,7 +93,7 @@ contract MedicalRecords2 {
 
     function addSurgery(address patientAddress, string memory procedureName) public onlyRegisteredClinicians{
         require(registrationSC.registeredPatients(patientAddress), "Patient is not registered");
-        patientsRecords[patientAddress].surgeries.push(surgery({
+        patientsRecords[patientAddress].surgeries.push(Surgery({
             clinician: msg.sender,
             procedureName: procedureName,
             date: block.timestamp
@@ -103,7 +103,7 @@ contract MedicalRecords2 {
 
     function addChronicDisease(address patientAddress, string memory disease, string memory treatment) public onlyRegisteredClinicians{
         require(registrationSC.registeredPatients(patientAddress), "Patient is not registered");        
-        patientsRecords[patientAddress].chronicDiseases.push(chronicDisease({
+        patientsRecords[patientAddress].chronicDiseases.push(ChronicDisease({
             clinician: msg.sender,
             disease: disease,
             treatment: treatment,
@@ -114,7 +114,7 @@ contract MedicalRecords2 {
 
     function addLabResult(address patientAddress, string memory testName, string memory testResult) public onlyRegisteredClinicians {
         require(registrationSC.registeredPatients(patientAddress), "Patient is not registered");
-        patientsRecords[patientAddress].labResults.push(labResult({
+        patientsRecords[patientAddress].labResults.push(LabResult({
             clinician: msg.sender,
             testName: testName,
             testResult: testResult,
