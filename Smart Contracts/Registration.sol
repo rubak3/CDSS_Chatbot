@@ -45,12 +45,7 @@ contract Registration {
     }
 
     function isClinicianRegistered() public view returns (bool) {
-        if (registeredClinicians[msg.sender] || registeredPharmacists[msg.sender]) {
-            return true;
-        }
-        else {
-            return false;
-        } 
+        return registeredClinicians[msg.sender]; 
     }
 
 }
